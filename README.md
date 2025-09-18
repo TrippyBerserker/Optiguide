@@ -1,3 +1,3 @@
 "# Optiguide" 
 edit by rithwik
-ganesh
+ganesh sathwik
