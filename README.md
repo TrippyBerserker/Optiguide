@@ -2,4 +2,4 @@
 edit by rithwik
 edit by sathwik
 edit by ganesh
-edit by omkar
+edit by dev-omkar
