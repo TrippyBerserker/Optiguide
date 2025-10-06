@@ -5,7 +5,7 @@ import os
 # =======================================================================
 # !!! CRITICAL CHANGE: SET YOUR ABSOLUTE PATH HERE !!!
 # Replace the placeholder with your actual path, e.g., r"C:\Users\msrid\OneDrive\Desktop\optiGuide\data"
-BASE_DATA_DIR = r"C:\Users\msrid\OneDrive\Desktop\optiGuide\data" 
+BASE_DATA_DIR = r"C:\Users\pc\Optiguide\data" 
 # =======================================================================
 
 # --- Helper Function for Cleaning Columns ---
