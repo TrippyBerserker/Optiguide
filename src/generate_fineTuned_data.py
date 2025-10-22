@@ -8,7 +8,7 @@ from datetime import datetime
 # =======================================================================
 # Configuration
 # =======================================================================
-BASE_DATA_DIR = r"C:\Users\pc\Optiguide\data"
+BASE_DATA_DIR = r"C:\Users\RITHWIK DIDIGAM\OneDrive\Desktop\supplyChain\Optiguide\data"
 PROCESSED_DIR = os.path.join(BASE_DATA_DIR, "processed")
 OUTPUT_FILE = os.path.join(PROCESSED_DIR, "fine_tuning_data.jsonl")
 
