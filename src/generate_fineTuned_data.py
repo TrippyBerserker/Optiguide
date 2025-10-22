@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+import sys
+# Ensure console uses UTF-8 encoding (avoids UnicodeEncodeError on Windows)
+sys.stdout.reconfigure(encoding='utf-8')
+
 import os
 import json
 import pickle
@@ -124,33 +129,11 @@ training_data = generate_training_data(n_samples_per_type=40)
 # =======================================================================
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     for example in training_data:
-        f.write(json.dumps(example) + "\n")
+        f.write(json.dumps(example, ensure_ascii=False) + "\n")
 
 print(f"✅ Fine-tuning dataset created at: {OUTPUT_FILE}")
 print(f"📊 Total samples: {len(training_data)}")
 
-# =======================================================================
-# (Optional) Kick off OpenAI fine-tuning (if API key is set)
-# =======================================================================
-# Uncomment below if you have an OpenAI fine-tuning account:
-"""
-from openai import OpenAI
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
-print('🚀 Uploading training file...')
-response = client.files.create(
-    file=open(OUTPUT_FILE, "rb"),
-    purpose="fine-tune"
-)
-file_id = response.id
-
-print('✅ Starting fine-tuning job...')
-fine_tune = client.fine_tuning.jobs.create(
-    training_file=file_id,
-    model="gpt-4o-mini",  # or your base model
-)
-print(f"Fine-tune job started: {fine_tune.id}")
-"""
 # =======================================================================
 # Convert to LLaMA-style JSONL (prompt/completion format)
 # =======================================================================
@@ -162,6 +145,6 @@ with open(LLAMA_FILE, "w", encoding="utf-8") as f_out:
         user_msg = ex["messages"][0]["content"]
         assistant_msg = ex["messages"][1]["content"]
         llama_format = {"prompt": user_msg, "completion": assistant_msg}
-        f_out.write(json.dumps(llama_format) + "\n")
+        f_out.write(json.dumps(llama_format, ensure_ascii=False) + "\n")
 
 print(f"✅ LLaMA fine-tuning file created: {LLAMA_FILE}")
