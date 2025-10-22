@@ -151,3 +151,17 @@ fine_tune = client.fine_tuning.jobs.create(
 )
 print(f"Fine-tune job started: {fine_tune.id}")
 """
+# =======================================================================
+# Convert to LLaMA-style JSONL (prompt/completion format)
+# =======================================================================
+LLAMA_FILE = os.path.join(PROCESSED_DIR, "fine_tuning_data_llama.jsonl")
+
+print("🔄 Converting dataset to LLaMA prompt-completion format...")
+with open(LLAMA_FILE, "w", encoding="utf-8") as f_out:
+    for ex in training_data:
+        user_msg = ex["messages"][0]["content"]
+        assistant_msg = ex["messages"][1]["content"]
+        llama_format = {"prompt": user_msg, "completion": assistant_msg}
+        f_out.write(json.dumps(llama_format) + "\n")
+
+print(f"✅ LLaMA fine-tuning file created: {LLAMA_FILE}")
