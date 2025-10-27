@@ -20,7 +20,7 @@ from peft import (
 
 # --- Configuration ---
 MODEL_NAME = "microsoft/Phi-3-mini-4k-instruct"
-DATA_PATH = r"C:\Users\msrid\OneDrive\Desktop\optiGuide\data\processed\fine_tuning_data.jsonl"
+DATA_PATH = r"C:\Users\RITHWIK DIDIGAM\OneDrive\Desktop\supplyChain\Optiguide\data\processed\fine_tuning_data.jsonl"
 OUT_DIR = os.path.join("models", "phi3-lora-optiguide")
 
 
